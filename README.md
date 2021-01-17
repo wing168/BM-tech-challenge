@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+## By Miles Junior Developer Tech Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This challenge was to create a simple web application with a login screen which takes a username and a password. Once authorised, it will navigate the user to another page which will display the policy details.
 
-## Available Scripts
+The app I have built is a first iteration and I would welcome any feedback!
 
-In the project directory, you can run:
+### How to run the app
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Technology used
 
-### `npm test`
+For this challenge, I chose to build the application using React which is something that I'm more familiar with. React Router was used to handle the route from the root path `/` to `/policy-details` on successful sign in.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I decided to use React Hooks, ie `useState`, for handling the state. I considered using Redux but felt it was not necessary at this stage as the web application was not overly complicated and Redux will have a time cost to set up.
 
-### `npm run build`
+Bootstrap was used to make sure the web application was responsive and could display properly on mobile devices (more comments on this in the further improvements section).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Comments on the API end points
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Login API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This API was called to get the `access_token` which would then be used in the policy details API to retrieve the policy details. Any username and password combinations can be submitted and a response will be returned with the `access_token` which did not change. 
 
-### `npm run eject`
+As such, for the purposes of this app, the only validation used in the form inputs was to make sure that both the username and password fields were not empty and then the log in button will be enabled and the information can be submitted.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+There is no error handling as we do not expect an incorrect username or password combination and no errors should be returned from the response. Currently just outputs the `err` to the console. This decision was made mainly for simplicity but would expect errors to be dealt with (more comments in the further improvements section).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Policy details API
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This API was called to get the policy details after successfully retrieving the `access_token`. The token gets passed in the `Authorization` header in the `GET` request and the policy details will be provided in the response.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+From my observations, it would appear that a response will still be provided even if the `Authorization` header is not supplied in the `GET` request. I'm assuming this was intentional as it is a mock API.
 
-## Learn More
+#### Potential CORS error
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+There is occasionally an error with the Login API and Policy details API where the API call will generate an error message saying that the local test environment `http://localhost:3000` has been blocked by CORS policy.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+** Error message **
 
-### Code Splitting
+<img src='./CORSerror.PNG'>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+From reading around online, my understanding is that this is an issue with the backend not liking the request I submitted from the local testing environment. I did try using a [proxy](https://cors-anywhere.herokuapp.com/) to overcome the problem but it would then generate intermittent `HTTP internal server error 500` messages.
 
-### Analyzing the Bundle Size
+As the error only occurs intermittently on both API endpoints and a refresh of the browser usually solves the issue, I have assumed for the purposes of this challenge that a full fix is not required. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Testing
 
-### Making a Progressive Web App
+I have added in some simple tests which can be accessed in the directory `client/App.test.js`. I used Jest and React testing library as they came as standard when using create-react-app. To run the tests, go to the terminal and execute `npm test`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+I also carried out tests manually as I was building the app to make sure:
 
-### Advanced Configuration
+* A user cannot log in unless if the user name and password fields contains something
+* Once the user name and password fields are populated, a user can log in
+* The token is available before the `GET` request is submitted to retrieve the policy details
+* Checked that a user cannot navigate to the `/policy-details` route unless if they have signed in
+* Policy details are displayed on successful sign in
+* Checked the display at different break points to see if the information is displaying as intended
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### Time spent on the challenge
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+For this challenge, I broken it up into sections and have spent the following amount of time:
 
-### `npm run build` fails to minify
+* Understanding the problem - ** around 30 mins **
+* Building the key functionality - ** around 2 - 3 hours **
+* Styling  -  ** around 1 - 2 hours **
+* Testing - ** around 1 - 2 hours **
+* Documentation - ** around 1 hour **
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Further improvements
+
+* Add validation to email field to make sure it includes an "@" sign
+* Create a sign out button
+* Collapse the driver details section to only display the driver names. Once clicked, further information is displayed
+* Could improve layout for smaller mobile phones
+* Build in the error handling features
+
