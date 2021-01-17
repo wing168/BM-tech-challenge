@@ -8,7 +8,6 @@ import './pol-details.styles.css'
 const PolDetailsPage = ({ location }) => {
 
     const accessToken = location.accessToken; // this was passed from sign-in page
-    console.log(accessToken)
     const [policyData, setPolicyData] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
@@ -29,15 +28,11 @@ const PolDetailsPage = ({ location }) => {
                 const polData = await polReq.json();
 
                 setPolicyData(polData);
-            }catch (err) {
+            } catch (err) {
                 console.log(err)
-
             }
         }
-
         getPolData()
-       
-        
     }, [accessToken]);
 
     //Check that the data is available before rendering the data onto the policy details component
@@ -57,10 +52,6 @@ const PolDetailsPage = ({ location }) => {
             }
         </div>
     )
-    
-    
-        
 }
-
 export default withRouter(PolDetailsPage);
 

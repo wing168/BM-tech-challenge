@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const DriverDetails = ({ driver }) => {
     return (
         
@@ -46,12 +44,7 @@ const DriverDetails = ({ driver }) => {
                 <div className='col-sm-8 key'>Email Address</div>
                 <div className='col-sm-4 values'>{driver.email}</div>
             </div>
-            
- 
         </div>
-      
-        
-        
     )
 }
 

@@ -2,9 +2,7 @@ import React from 'react';
 import DriverDetails from '../driver-details/driver-details.component';
 
 const PolDetails = ({ policyData }) => {
-    console.log(policyData)
-
-    //Mapping for usage from code to actual description so customer's know exactly what they have selected    
+    //Mapping for usage from code to description so customer's know exactly what they have selected    
     let usageFullLen = null;
     if (policyData.policy.usage === "SDP") usageFullLen = "Social, Domestic & Pleasure";
     else if (policyData.policy.usage === "SDPC") usageFullLen = "Social Domestic & Pleasure (incl. Commuting)"

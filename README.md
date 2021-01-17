@@ -2,7 +2,7 @@
 
 This challenge was to create a simple web application with a login screen which takes a username and a password. Once authorised, it will navigate the user to another page which will display the policy details.
 
-The app I have built is a first iteration and I would welcome any feedback!
+The app built is a first iteration and I would welcome any feedback!
 
 ### How to run the app 
 
