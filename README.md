@@ -4,9 +4,9 @@ This challenge was to create a simple web application with a login screen which 
 
 The app I have built is a first iteration and I would welcome any feedback!
 
-### How to run the app
+### How to run the app 
 
-
+Once the project has been cloned locally, run `npm install` in the main directory to install the packages. Once packages have been installed, use `npm start` to start local development server for the web app.
 
 ### Technology used
 
@@ -36,7 +36,7 @@ From my observations, it would appear that a response will still be provided eve
 
 There is occasionally an error with the Login API and Policy details API where the API call will generate an error message saying that the local test environment `http://localhost:3000` has been blocked by CORS policy.
 
-** Error message **
+**Error message**
 
 <img src='./CORSerror.PNG'>
 
@@ -44,9 +44,13 @@ From reading around online, my understanding is that this is an issue with the b
 
 As the error only occurs intermittently on both API endpoints and a refresh of the browser usually solves the issue, I have assumed for the purposes of this challenge that a full fix is not required. 
 
+### Comments on the policy details data
+
+Some of the data that is displayed, such as occupation, have a code which would require a mapping document to translate into information that could be easily understood by a customer. For usage (eg. SDP), I added in some code to translate the raw data into a readable format. 
+
 ### Testing
 
-I have added in some simple tests which can be accessed in the directory `client/App.test.js`. I used Jest and React testing library as they came as standard when using create-react-app. To run the tests, go to the terminal and execute `npm test`.
+I have added in some simple tests which can be found in `App.test.js`. I used Jest and React testing library as they came as standard when using create-react-app. To run the tests, go to the terminal and execute `npm test`.
 
 I also carried out tests manually as I was building the app to make sure:
 
@@ -62,15 +66,16 @@ I also carried out tests manually as I was building the app to make sure:
 
 For this challenge, I broken it up into sections and have spent the following amount of time:
 
-* Understanding the problem - ** around 30 mins **
-* Building the key functionality - ** around 2 - 3 hours **
-* Styling  -  ** around 1 - 2 hours **
-* Testing - ** around 1 - 2 hours **
-* Documentation - ** around 1 hour **
+* Understanding the problem - **around 30 mins**
+* Building the key functionality - **around 2 - 3 hours**
+* Styling  -  **around 1 - 2 hours**
+* Testing - **around 1 - 2 hours**
+* Documentation - **around 1 hour**
 
 ### Further improvements
 
 * Add validation to email field to make sure it includes an "@" sign
+* Need to add in many more tests in `App.test.js`.
 * Create a sign out button
 * Collapse the driver details section to only display the driver names. Once clicked, further information is displayed
 * Could improve layout for smaller mobile phones
