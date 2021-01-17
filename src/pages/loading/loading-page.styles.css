@@ -1,0 +1,20 @@
+.loading {
+    height: 100%;
+    width: 100%;
+}
+
+.spinner {
+    position: absolute;
+    top: calc(50vh - 40px);
+    left: calc(50vw -40px);
+}
+
+.loading-text {
+    color: rgba(30,13,45,.8);
+    font-size: 35px;
+    font-family: 'Roboto';
+    font-weight: bold;
+    position: absolute;
+    top: calc(50vh );
+    left: calc(50vw -40px);
+}

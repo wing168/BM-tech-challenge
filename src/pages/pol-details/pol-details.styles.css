@@ -1,0 +1,35 @@
+.logo-wrap {
+    color: rgba(30,13,45,.8);
+    font-size: 50px;
+    font-family: 'Roboto';
+    font-weight: bold;
+    
+}
+
+.miles-name {
+
+    border-bottom: 5px solid #f9644b;
+    margin-left: 10px
+ 
+}
+
+.pol-info {
+    color: rgba(30,13,45,.8);
+}
+
+.section-header {
+    background-color: rgba(30,13,45,.8);
+    color: white;
+    border-radius: 5px;
+    width: 95%;
+    
+}
+
+.info {
+    width: 95%;
+    height: 35px;
+}
+
+.values {
+    font-weight: bold;
+}
