@@ -50,7 +50,7 @@ When reviewing the web app, an error will have occurred if the log in page is st
 
 Some of the data that is displayed, such as occupation, have a code which would require a mapping document to translate into information that could be easily understood by a customer. For usage (eg. SDP), I added in some code to translate the raw data into a readable format (ie to Social, Domestic & Pleasure). 
 
-For the purpose of this challenge, I have assumed this is ok but would expect a lookup of some sort to be available if actually displaying this information to a customer.
+For the purpose of this challenge, I have assumed this is ok but would expect a lookup of some sort to be available if actually displaying this information for a customer.
 
 ### Testing
 
